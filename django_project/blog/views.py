@@ -1,24 +1,12 @@
 from django.shortcuts import render
-
-posts_list = [
-    {
-        'author': 'Roberto',
-        'title': 'Blog Post 1 Test',
-        'content': 'First post content here',
-        'date_posted': 'August 27, 2018'
-    },
-    {
-        'author': 'Roberto Kozako',
-        'title': 'Blog Post 2 Test',
-        'content': 'Second post content here',
-        'date_posted': 'August 28, 2018'
-    }
-]
+# .models -> kropka oznacza, że importujemy z katalogu, w którym się znajdujemy
+from .models import Post
 
 
 def home(request):
     context = {
-        'posts': posts_list
+        'posts': Post.objects.all(),
+
     }
     return render(request, 'blog/home.html', context)
 
